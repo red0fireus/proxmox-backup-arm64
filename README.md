@@ -87,16 +87,19 @@ rustup target add aarch64-unknown-linux-gnu
 ## Install all needed packages
 ### Server
 ```
-sudo apt install \
-  ./libjs-extjs_*_all.deb \
-  ./libjs-qrcodejs_*_all.deb \
-  ./libproxmox-acme-plugins_*_all.deb \
-  ./pbs-i18n_*_all.deb \
-  ./proxmox-backup-docs_*_all.deb \
-  ./proxmox-backup-server_*_arm64.deb \
-  ./proxmox-mini-journalreader_*_arm64.deb \
-  ./proxmox-widget-toolkit_*_all.deb \
-  ./pve-xtermjs_*_arm64.deb
+chmod -R o+r /root/proxmox-backup-arm64/packages/
+
+sudo apt install $(find . -type f
+  ( -name "libjs-extjs_all.deb"
+  -o -name "libjs-qrcodejsall.deb"
+  -o -name "libproxmox-acme-pluginsall.deb"
+  -o -name "pbs-i18nall.deb"
+  -o -name "proxmox-backup-docsall.deb"
+  -o -name "proxmox-backup-serverarm64.deb"
+  -o -name "proxmox-mini-journalreaderarm64.deb"
+  -o -name "proxmox-widget-toolkitall.deb"
+  -o -name "pve-xtermjs*_arm64.deb" ))
+
 ```
 
 ### Client
